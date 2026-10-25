@@ -11,8 +11,8 @@ Instead of relying on heavy frontend plugins that freeze the UI while waiting fo
 ## Live Deployment & Access Links
 
 - **Live Admin Dashboard (Frontend):** [https://leafsync-dashboard.bubbleapps.io/version-test/admin_dashboard](https://leafsync-dashboard.bubbleapps.io/version-test/admin_dashboard)
-- **Bubble Editor (Database & Architecture View):** [Insert your bubble.io/page?id... link here]
-- **n8n Automation Code:** [View `n8n-workflow/workflow-export.json`](./n8n-workflow/workflow-export.json)
+- **Bubble Editor (Database & Architecture View):** [https://bubble.io/page?id=leafsync-dashboard&tab=Design&name=admin_dashboard&type=page&subtab=General&elements=bTGQs](https://bubble.io/page?id=leafsync-dashboard&tab=Design&name=admin_dashboard&type=page&subtab=General&elements=bTGQs)
+- **GitHub Repository (n8n Workflow Code & Docs):** [https://github.com/Shreyansh3108/Leafsync2](https://github.com/Shreyansh3108/Leafsync2)
 
 > **Note on Evaluation:** The Bubble Editor has been set to "Everyone can view" so you can inspect the Data Privacy Rules and API Connector webhook configurations. 
 
