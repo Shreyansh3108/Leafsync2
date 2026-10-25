@@ -1,0 +1,116 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "954bb773-1546-4099-8458-eaf1d43c6754",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1e0fc1b1-9b9d-4ac1-aafb-f504f8a195fd",
+      "name": "Webhook",
+      "webhookId": "954bb773-1546-4099-8458-eaf1d43c6754"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3-flash-preview",
+          "cachedResultName": "Gemini 3 Flash Preview",
+          "cachedResultUrl": ""
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an automated finance assistant for BookLeaf Publishing. Write a short, professional 2-sentence email confirming that a royalty payout request has been received and is being processed.\n\nBook Title:{{ $json.body.title }}\nPayout Amount: ₹{{ $json.body.amount }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "c50bb59b-f217-4124-aef1-ee6642bc364d",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QNTtjRGIFe6yfXhn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "nikkudwivedi4942@gmail.com",
+        "subject": "BookLeaf Royalty Update",
+        "message": "={{ $json.content.parts[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        0
+      ],
+      "id": "1c562ef1-a216-4098-8cc3-fbbc996752c0",
+      "name": "Send a message",
+      "webhookId": "894fce61-2786-4964-aea1-a90d00d14f24",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jwzvNqO0Sd3kz0C2",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "957c9cce-a516-4c5b-ae4d-72238770deca",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "055cd7fc46608b90e6cfd967ad26551d51a6213fbf3a39b39be374541ff2ec40"
+  },
+  "nodeGroups": [],
+  "id": "9VTmuq5nwnaOGkNA",
+  "tags": []
+}
